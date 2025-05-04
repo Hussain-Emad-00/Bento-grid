@@ -1,0 +1,303 @@
+:root {
+	--Purple100: hsl(254, 88%, 90%);
+	--Purple500: hsl(256, 67%, 59%);
+	--Yellow100: hsl(31, 66%, 93%);
+	--Yellow500: hsl(39, 100%, 71%);
+	--White: hsl(0, 0%, 100%);
+	--Black: hsl(0, 0%, 7%);
+}
+
+@font-face {
+	font-family: DMSans;
+	src: url("../assets/fonts/DMSans-VariableFont_opsz,wght.ttf");
+}
+
+@font-face {
+	font-family: DMSansItalic;
+	src: url("../assets/fonts/DMSans-Italic-VariableFont_opsz\,wght.ttf");
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: DMSans, sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	background: var(--White);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+h2 {
+	font-family: DMSans, sans-serif;
+	font-weight: 500;
+	font-size: 1.8rem;
+	line-height: 0.9;
+}
+
+main {
+	max-width: 1200px;
+	padding: 10px 15px;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	gap: 1rem 0;
+	justify-content: space-between;
+	align-content: space-between;
+	grid-template-areas:
+		"reviews"
+		"multiplePlatforms"
+		"consistentSchedule"
+		"schedulePosts"
+		"growFollowers"
+		"audienceGrowth"
+		"createPost"
+		"aiContent";
+}
+
+.card {
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.05);
+	min-height: 150px;
+	text-align: center;
+
+	& img {
+		min-width: min(280px, 100%);
+		max-width: 90%;
+	}
+}
+
+.reviews {
+	grid-area: reviews;
+	background: var(--Purple500);
+	color: var(--White);
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	overflow: hidden;
+
+	& h1 {
+		font-size: 3rem;
+		text-wrap: balance;
+		margin-bottom: 20px;
+		line-height: 1;
+		font-weight: 500;
+		& span:nth-child(1) {
+			color: var(--Yellow500);
+		}
+		& span:nth-child(2) {
+			font-family: DMSansItalic, sans-serif;
+		}
+	}
+
+	& p {
+		margin: 5px 0 10px;
+	}
+}
+
+.multiple-platforms {
+	grid-area: multiplePlatforms;
+	background: var(--White);
+	text-align: center;
+	text-wrap: balance;
+	overflow: hidden;
+
+	& img {
+		width: max(320px, 85%);
+		object-fit: cover;
+	}
+	& h2 {
+		text-align: left;
+	}
+}
+
+.consistent-schedule {
+	grid-area: consistentSchedule;
+	background: var(--Yellow500);
+	text-align: left;
+	text-wrap: balance;
+	overflow: hidden;
+
+	& img {
+		max-width: 50%;
+		margin-top: 20px;
+		margin-bottom: -25%;
+	}
+}
+
+.schedule-posts {
+	grid-area: schedulePosts;
+	background: var(--Purple100);
+
+	& h2 {
+		margin: 10px 0 30px;
+	}
+
+	& img {
+		width: min(375px, 100%);
+	}
+
+	& p {
+		margin: 30px 0 10px;
+		font-weight: 500;
+	}
+}
+
+.grow-followers {
+	grid-area: growFollowers;
+	background: var(--Purple500);
+	color: var(--White);
+	text-align: center;
+
+	& img {
+		width: min(280px, 100%);
+		margin-bottom: 30px;
+	}
+}
+
+.audience-growth {
+	grid-area: audienceGrowth;
+	background: var(--White);
+	text-align: left;
+
+	& h2 {
+		font-size: 2.9rem;
+		margin-bottom: 10px;
+	}
+
+	& img {
+		min-width: unset;
+		width: min(185px, 100%);
+		margin: 20px 0 10px 0;
+	}
+}
+
+.create-post {
+	grid-area: createPost;
+	background: var(--Yellow100);
+	text-align: left;
+
+	& h2 {
+		& span {
+			color: var(--Purple500);
+			font-family: DMSansItalic, sans-serif;
+		}
+	}
+
+	& img {
+		margin-top: 20px;
+		min-width: unset;
+		width: min(150px, 100%);
+	}
+}
+
+.ai-content {
+	grid-area: aiContent;
+	background: var(--Yellow500);
+	text-align: left;
+
+	& img {
+		margin-top: 20px;
+		min-width: unset;
+		width: min(200px, 100%);
+	}
+}
+
+.sharedArea {
+	grid-area: sharedArea;
+	display: none;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(2, calc(50% - 0.75rem));
+	justify-content: space-between;
+	align-content: space-between;
+	grid-template-areas: "createPost" "aiContent";
+
+	.create-post,
+	.ai-content {
+		display: none;
+	}
+}
+
+@media (min-width: 1000px) {
+	main {
+		gap: 2rem;
+		width: 100%;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+		grid-template-areas:
+			"sharedArea reviews reviews schedulePosts"
+			"sharedArea multiplePlatforms consistentSchedule schedulePosts"
+			"sharedArea audienceGrowth growFollowers growFollowers";
+
+		.create-post,
+		.ai-content {
+			display: none;
+		}
+		.sharedArea {
+			display: grid;
+
+			.create-post {
+				display: block;
+				align-content: center;
+			}
+
+			.ai-content {
+				display: flex;
+				flex-flow: column wrap;
+				justify-content: space-between;
+				align-items: center;
+				& img {
+					margin-right: -10px;
+					min-width: 100%;
+				}
+			}
+		}
+
+		.grow-followers {
+			display: flex;
+			text-align: left;
+			align-content: center;
+			align-items: center;
+			& img {
+				min-width: unset;
+				width: 50%;
+				object-fit: cover;
+				margin-bottom: 0;
+			}
+		}
+
+		.consistent-schedule {
+			& img {
+				height: 200px;
+				object-fit: unset;
+				margin-bottom: -260px;
+			}
+		}
+
+		.multiple-platforms {
+			& img {
+				width: 300px;
+				max-width: unset;
+				object-fit: cover;
+			}
+		}
+
+		.schedule-posts {
+			overflow: hidden;
+			& img {
+				object-fit: unset;
+				margin-right: -200px;
+				width: 400px;
+				max-width: unset;
+			}
+		}
+	}
+}
